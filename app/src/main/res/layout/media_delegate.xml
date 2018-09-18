@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/container"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:id="@+id/movieTittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="45sp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/dark" />
+        </FrameLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="190dp"
+            android:layout_height="240dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:transitionName="profile"
+            android:layout_below="@+id/container"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/textYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/dark"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textYear"
+            android:layout_alignLeft="@+id/textYear"
+            android:layout_below="@+id/textYear"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/dark"
+            android:textSize="18sp"
+            />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="13dp"
+            />
+
+        <TextView
+            android:id="@+id/textSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="12dp"
+            android:layout_below="@+id/view1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="5dp"
+            android:scrollbars="vertical"
+            android:textAlignment="textStart"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="@color/dark"
+            android:textSize="16sp"
+            />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textSummary"
+            android:layout_marginTop="5dp"
+            />
+
+        <Button
+            android:id="@+id/trailerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/light"
+            android:text="@string/favorites"
+            android:textColor="@color/dark"
+            android:textSize="11sp"
+            android:textAlignment="center"
+            android:layout_below="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginTop="26dp" />
+    </RelativeLayout>
+</ScrollView>
