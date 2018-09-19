@@ -51,10 +51,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
                 @Override
                 public void onClick(View view) {
                     int pos = getAdapterPosition();
-//                    Intent intent = new Intent(mContext, SecondActivity.class);
-//                    intent.putExtra(SecondActivity.EXTRA_MOVIE, mMovieList.get(pos));
-//                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mContext, view, "profile");
-//                    mContext.startActivity(intent, options.toBundle());
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    intent.putExtra(DetailsActivity.EXTRA_MOVIE, mMovieList.get(pos));
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)mContext, view, "profile");
+                    mContext.startActivity(intent, options.toBundle());
                 }
             });
         }
