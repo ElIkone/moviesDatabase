@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         List<Movie> movies = new ArrayList<>();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecycleAdapter = new RecycleAdapter(MainActivity.this);
         mRecyclerView.setAdapter(mRecycleAdapter);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.settings, menu);
+        inflater.inflate(R.menu.settings, menu);
         return super.onCreateOptionsMenu(menu);
     }
     private boolean isNetworkAvailable() {
@@ -111,16 +111,17 @@ public class MainActivity extends AppCompatActivity {
         URL searchUrl = Network.buildUrl("rated", " ");
         new GetTopQueryTask().execute(searchUrl);
     }
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item)  {
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                getPopularMovies();
-//                return true;
-//            case R.id.action_rated:
-//                getTopMovies();
-//                return true;
-//        }
-//        return false;
-//    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)  {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                getPopularMovies();
+                return true;
+            case R.id.action_rated:
+                getTopMovies();
+                return true;
+        }
+        return false;
+    }
 }
