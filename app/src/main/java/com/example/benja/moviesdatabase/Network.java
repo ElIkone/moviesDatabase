@@ -18,7 +18,8 @@ import java.util.List;
 
 
 public class Network {
-    private final static String baseURL = "https://api.themoviedb.org/3/movie/";
+    private final static String baseURL =
+            "https://api.themoviedb.org/3/movie/";
     private final static String paramKey = "api_key";
     private final static String keyValue = "";
     ///Replace KeyValue with your key from the movie Db
