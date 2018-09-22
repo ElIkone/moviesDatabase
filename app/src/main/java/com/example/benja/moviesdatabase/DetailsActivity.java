@@ -2,6 +2,7 @@ package com.example.benja.moviesdatabase;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView title;
     TextView description;
     TextView average;
+    Button favorites;
     private Movie mMovie;
 
     @Override
@@ -29,6 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         poster = findViewById(R.id.imageView);
+        favorites = findViewById(R.id.favoritesButton);
         title = findViewById(R.id.movieTittle);
         description = findViewById(R.id.textSummary);
         year = findViewById(R.id.textYear);
