@@ -2,7 +2,6 @@ package com.example.benja.moviesdatabase;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -19,6 +18,7 @@ public class Movie implements Parcelable {
         }
     };
 
+    private String  id;
     private String title;
     @SerializedName("poster_path")
     private String poster;
@@ -35,6 +35,7 @@ public class Movie implements Parcelable {
     }
 
     protected Movie(Parcel in) {
+        id = in.readString();
         title = in.readString();
         poster = in.readString();
         description = in.readString();
@@ -51,10 +52,7 @@ public class Movie implements Parcelable {
         this.title = title;
     }
 
-    public String getPoster() {
-        Log.v("benjamin", "moviesss"+ poster);
-        return url_image + poster;
-    }
+    public String getPoster() { return url_image + poster; }
 
     public void setPoster(String poster) {
         this.poster = poster;
@@ -67,6 +65,10 @@ public class Movie implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getId() {return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public String getYear() {
         return release_date;
@@ -91,6 +93,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
         parcel.writeString(title);
         parcel.writeString(poster);
         parcel.writeString(description);
