@@ -25,6 +25,8 @@ public class Network {
     ///Replace KeyValue with your key from the movie Db
     private final static String popular = "popular";
     private final static String rated = "top_rated";
+    private final static String videos = "videos";
+    private final static String reviews = "reviews";
 
     private final static String TAG = "Network";
 
@@ -42,6 +44,15 @@ public class Network {
                         .appendQueryParameter(paramKey, keyValue)
                         .build();
                 break;
+            case "videos":
+                buildUrl = Uri.parse(baseURL + id + "/" + videos).buildUpon()
+                        .appendQueryParameter(paramKey, keyValue)
+                        .build();
+                break;
+            case "reviews":
+                buildUrl = Uri.parse(baseURL + id +  "/" + reviews).buildUpon()
+                        .appendQueryParameter(paramKey, keyValue)
+                        .build();
         }
         URL url = null;
         try {
