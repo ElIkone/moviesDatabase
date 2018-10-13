@@ -10,20 +10,20 @@ import com.squareup.picasso.Picasso;
 
 public class DetailsActivity extends AppCompatActivity {
     public static final String EXTRA_MOVIE = "movie";
-    public String year2;
+    private String year2;
     TextView year;
     ImageView poster;
     TextView title;
     TextView description;
     TextView average;
     Button favorites;
-    private Movie mMovie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.media_delegate);
 
+        Movie mMovie;
         if (getIntent().hasExtra(EXTRA_MOVIE)) {
             mMovie = getIntent().getParcelableExtra(EXTRA_MOVIE);
         } else {

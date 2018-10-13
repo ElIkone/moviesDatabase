@@ -17,11 +17,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity {
-    RecycleAdapter mRecycleAdapter;
+    private RecycleAdapter mRecycleAdapter;
     private RecyclerView mRecyclerView;
     private ArrayList<Movie> mMovieItems = new ArrayList<>();
     private ArrayList<Movie> topRated = new ArrayList<>();
-    private String TAG = MainActivity.class.getSimpleName();
+    private final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
