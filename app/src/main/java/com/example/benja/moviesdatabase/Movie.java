@@ -28,7 +28,7 @@ public class Movie implements Parcelable {
     private String release_date;
     @SerializedName("vote_average")
     private String average;
-    private String url_image = "http://image.tmdb.org/t/p/w500";
+    private final String url_image = "http://image.tmdb.org/t/p/w500";
 
     public Movie() {
 
