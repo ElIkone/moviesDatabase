@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Network is down", Toast.LENGTH_SHORT).show();
         }
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.settings, menu);
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return isAvailable;
     }
+
     private class GetQueryTask extends AsyncTask<URL, Void, ArrayList<Movie>> {
         @Override
         protected ArrayList<Movie> doInBackground(URL... params) {
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         mRecycleAdapter.setMovieList(mMovieItems);
     }
     private void setupAdapterRated() {
+
         mRecycleAdapter.setMovieList(topRated);
     }
     private void getPopularMovies() {

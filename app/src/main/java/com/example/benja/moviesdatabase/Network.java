@@ -3,6 +3,9 @@ package com.example.benja.moviesdatabase;
 import android.net.Uri;
 import android.util.Log;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +24,7 @@ public class Network {
     private final static String baseURL =
             "https://api.themoviedb.org/3/movie/";
     private final static String paramKey = "api_key";
-    private final static String keyValue = "";
+    private final static String keyValue = "1609818c5e2f435330c30dba561e86bc";
     ///Replace KeyValue with your key from the movie Db
     private final static String popular = "popular";
     private final static String rated = "top_rated";
@@ -99,6 +102,11 @@ public class Network {
         return downloadGalleryItems(url);
     }
 
+    public List<Video> getPopularVideos(String id) {
+        String url = buildUrl("videos", id).toString();
+        return downloadVideos(url);
+    }
+
 
     private String getUrlString(String urlSpec) throws IOException {
         return new String(getResponseFromHttpUrl(urlSpec));
@@ -118,15 +126,45 @@ public class Network {
         return items;
     }
 
+    private List<Video> downloadVideos(String url) {
+        List<Video> items = new ArrayList<>();
+        try {
+            String jsonString = getUrlString(url);
+            Log.d(TAG, "Received JSON2222: " + jsonString);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseItemVideos(items, jsonBody);
+        } catch (JSONException je) {
+            Log.e(TAG, "Failed to parse JSON", je);
+        } catch (IOException ioe) {
+            Log.i(TAG, "Failed to fetch items" + ioe);
+        }
+        return items;
+    }
+
+    private void parseItemVideos(List<Video> items, JSONObject jsonBody)
+        throws IOException, JSONException {
+            JSONArray questionsJsonObject = jsonBody.getJSONArray("results");
+        for (int i = 0; i < questionsJsonObject.length(); i++) {
+            JSONObject questionJsonObject = questionsJsonObject.getJSONObject(i);
+            Video item = new Video();
+            item.setId(questionJsonObject.getString("id"));
+            item.setKey(questionJsonObject.getString("key"));
+            items.add(item);
+            }
+        }
+
+
     private void parseItems(List<Movie> items, JSONObject jsonBody)
             throws IOException, JSONException {
 
         JSONArray questionsJsonObject = jsonBody.getJSONArray("results");
 
         for (int i = 0; i < questionsJsonObject.length(); i++) {
+            Log.v("benjaminTest,", "benjaminMovies"+ questionsJsonObject.getJSONObject(i));
             JSONObject questionJsonObject = questionsJsonObject.getJSONObject(i);
 
             Movie item = new Movie();
+            item.setId(questionJsonObject.getString("id"));
             item.setTitle(questionJsonObject.getString("title"));
             item.setPoster(questionJsonObject.getString("poster_path"));
             item.setDescription(questionJsonObject.getString("overview"));
