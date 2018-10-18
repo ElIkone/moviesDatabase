@@ -110,6 +110,7 @@
             android:layout_below="@+id/textView2"
             android:layout_alignStart="@+id/textView2"
             android:layout_marginTop="26dp" />
+
         <FrameLayout
             android:id="@+id/frame_layout_text"
             android:layout_width="match_parent"
@@ -120,6 +121,8 @@
             android:layout_marginEnd="0dp"
             android:layout_marginLeft="15dp"
             >
+            <View style="@style/Divider"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
