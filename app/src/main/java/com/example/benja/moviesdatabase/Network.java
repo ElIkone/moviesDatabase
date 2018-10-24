@@ -2,10 +2,6 @@ package com.example.benja.moviesdatabase;
 
 import android.net.Uri;
 import android.util.Log;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +14,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Network {
     private final static String baseURL =
@@ -52,7 +47,7 @@ public class Network {
                         .appendQueryParameter(paramKey, keyValue)
                         .build();
                 break;
-            case "reviews":
+            case "review":
                 buildUrl = Uri.parse(baseURL + id +  "/" + reviews).buildUpon()
                         .appendQueryParameter(paramKey, keyValue)
                         .build();
@@ -107,7 +102,6 @@ public class Network {
         return downloadVideos(url);
     }
 
-
     private String getUrlString(String urlSpec) throws IOException {
         return new String(getResponseFromHttpUrl(urlSpec));
     }
@@ -130,7 +124,6 @@ public class Network {
         List<Video> items = new ArrayList<>();
         try {
             String jsonString = getUrlString(url);
-            Log.d(TAG, "Received JSON2222: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
             parseItemVideos(items, jsonBody);
         } catch (JSONException je) {
@@ -139,6 +132,26 @@ public class Network {
             Log.i(TAG, "Failed to fetch items" + ioe);
         }
         return items;
+    }
+
+    public Review getVideoReview(String id) {
+        String url = buildUrl("review", id).toString();
+        return downloadReview(url);
+    }
+
+    private Review downloadReview(String url) {
+        Review myReview = new Review();
+        try {
+            String jsonString = getUrlString(url);
+            Log.d(TAG, "Received JSON: " + jsonString);
+            JSONObject jsonBody = new JSONObject(jsonString);
+            parseVideoReview(myReview, jsonBody);
+        } catch (JSONException je) {
+            Log.e(TAG, "Failed to parse JSON", je);
+        } catch (IOException ioe) {
+            Log.i(TAG, "Failed to fetch items" + ioe);
+        }
+        return myReview;
     }
 
     private void parseItemVideos(List<Video> items, JSONObject jsonBody)
@@ -160,7 +173,6 @@ public class Network {
         JSONArray questionsJsonObject = jsonBody.getJSONArray("results");
 
         for (int i = 0; i < questionsJsonObject.length(); i++) {
-            Log.v("benjaminTest,", "benjaminMovies"+ questionsJsonObject.getJSONObject(i));
             JSONObject questionJsonObject = questionsJsonObject.getJSONObject(i);
 
             Movie item = new Movie();
@@ -172,6 +184,20 @@ public class Network {
             item.setAverage(questionJsonObject.getString("vote_average"));
             Log.d(TAG, questionJsonObject.getString("title"));
             items.add(item);
+        }
+    }
+
+    private void parseVideoReview(Review myReview, JSONObject jsonBody)
+            throws IOException, JSONException {
+
+        JSONArray questionsJsonObject = jsonBody.getJSONArray("results");
+
+        for (int i = 0; i < questionsJsonObject.length(); i++) {
+            JSONObject questionJsonObject = questionsJsonObject.getJSONObject(i);
+            myReview.setrAuthor(questionJsonObject.getString("author"));
+            myReview.setrReview(questionJsonObject.getString("content"));
+            myReview.setrId(questionJsonObject.getString("id"));
+            Log.d(TAG, questionJsonObject.getString("author"));
         }
     }
 }
