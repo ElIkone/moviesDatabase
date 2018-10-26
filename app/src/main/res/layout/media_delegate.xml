@@ -23,7 +23,6 @@
                 android:layout_marginLeft="15dp"
                 android:textColor="@color/dark" />
         </FrameLayout>
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="190dp"
@@ -36,7 +35,6 @@
             android:layout_below="@+id/container"
             android:layout_alignParentStart="true"
          />
-
         <TextView
             android:id="@+id/textYear"
             android:layout_width="wrap_content"
@@ -48,7 +46,6 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="10dp"
          />
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -60,7 +57,6 @@
             android:textColor="@color/dark"
             android:textSize="18sp"
          />
-
         <View
             android:id="@+id/view1"
             android:layout_width="fill_parent"
@@ -69,7 +65,6 @@
             android:layout_below="@+id/imageView"
             android:layout_marginTop="13dp"
          />
-
         <TextView
             android:id="@+id/textSummary"
             android:layout_width="wrap_content"
@@ -97,7 +92,6 @@
             android:layout_below="@+id/textSummary"
             android:layout_marginTop="5dp"
          />
-
         <Button
             android:id="@+id/favoritesButton"
             android:layout_width="wrap_content"
@@ -138,28 +132,21 @@
         </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="match_parent"
             android:layout_below="@+id/frame_layout_text"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="0dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/videoRecycler"
                     android:layout_below="@+id/textSummary"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
                     />
-            </LinearLayout>
-        </FrameLayout>
 
+        </FrameLayout>
         <Button
             android:id="@+id/reviewButton"
             android:layout_width="wrap_content"
