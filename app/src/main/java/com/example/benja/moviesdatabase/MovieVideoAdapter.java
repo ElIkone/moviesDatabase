@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 import android.content.ActivityNotFoundException;
@@ -39,11 +40,11 @@ public class MovieVideoAdapter extends  RecyclerView.Adapter<MovieVideoAdapter.V
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         Video movieVideo;
-        public TextView textView;
+        public ImageView imageView;
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            textView = itemView.findViewById(R.id.textView);
+            imageView = itemView.findViewById(R.id.movieItem);
         }
 
         void bind(int listIndex) {
