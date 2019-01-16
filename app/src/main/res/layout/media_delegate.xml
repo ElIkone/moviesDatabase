@@ -63,12 +63,10 @@
             android:id="@+id/star_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="174dp"
-            android:layout_marginEnd="137dp"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_alignStart="@id/textView2"
+            android:layout_alignLeft="@id/textView2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="25dp"
             app:srcCompat="@drawable/star" />
         <View
             android:id="@+id/view1"
