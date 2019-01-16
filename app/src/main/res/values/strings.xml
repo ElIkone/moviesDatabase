@@ -7,4 +7,5 @@
     <string name="review">Review</string>
     <string name="author">Author</string>
     <string name="cd_btn_cls">Close</string>
+    <string name="reviewError">Review for movie is not available yet</string>
 </resources>
