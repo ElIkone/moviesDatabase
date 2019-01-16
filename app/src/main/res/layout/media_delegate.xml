@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true">
@@ -21,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="45sp"
                 android:layout_marginLeft="15dp"
-                android:textColor="@color/dark" />
+                android:textColor="@color/light" />
         </FrameLayout>
         <ImageView
             android:id="@+id/imageView"
@@ -53,10 +54,22 @@
             android:layout_alignStart="@+id/textYear"
             android:layout_alignLeft="@+id/textYear"
             android:layout_below="@+id/textYear"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="25dp"
             android:textColor="@color/dark"
             android:textSize="18sp"
          />
+
+        <ImageView
+            android:id="@+id/star_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="174dp"
+            android:layout_marginEnd="137dp"
+            android:layout_toEndOf="@+id/imageView"
+            app:srcCompat="@drawable/star" />
         <View
             android:id="@+id/view1"
             android:layout_width="fill_parent"
@@ -92,19 +105,6 @@
             android:layout_below="@+id/textSummary"
             android:layout_marginTop="5dp"
          />
-        <Button
-            android:id="@+id/favoritesButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/light"
-            android:text="@string/favorites"
-            android:textColor="@color/dark"
-            android:textSize="11sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_marginTop="26dp"
-            />
 
         <FrameLayout
             android:id="@+id/frame_layout_text"
@@ -147,14 +147,15 @@
                     />
 
         </FrameLayout>
+
         <Button
             android:id="@+id/reviewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/favoritesButton"
-            android:layout_alignEnd="@+id/favoritesButton"
+            android:layout_below="@+id/star_icon"
+            android:layout_marginStart="21dp"
             android:layout_marginTop="18dp"
-            android:text="@string/review"
-            />
+            android:layout_toEndOf="@+id/imageView"
+            android:text="@string/review" />
     </RelativeLayout>
 </ScrollView>
