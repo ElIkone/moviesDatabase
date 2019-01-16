@@ -80,7 +80,6 @@ public class DetailsActivity extends AppCompatActivity {
         starImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                starImage.setImageResource(R.drawable.filledstar);
                 saveFavorites(poster2,averageOriginal);
             }
         });
@@ -95,8 +94,6 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getReview(movieid);
-
-
              }
             });
         }
@@ -138,7 +135,7 @@ public class DetailsActivity extends AppCompatActivity {
                     showPopUp();
                     updateReview(mReview);
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "This movie hasn't any review", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.review), Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
