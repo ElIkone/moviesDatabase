@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
         String currentModel;
         int position;
         if (showPopularModel) {
@@ -91,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
             position =  mLayoutManager.findFirstVisibleItemPosition();
         }
 
-
         outState.putString("currentPage", currentModel);
         outState.putInt("currentPosition", position);
         super.onSaveInstanceState(outState);
@@ -101,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
     public void onRestoreInstanceState(Bundle outState) {
         super.onRestoreInstanceState(outState);
         String currentPage = outState.getString("currentPage");
-        int position = outState.getInt("currentPosition");
-
-
         if (currentPage == "top") {
             showFavModel = false;
             showTopModel = true;
@@ -154,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
             if (mMovieItems != null && mMovieItems.size() > 0) {
                 mMovieItems = newMovieItems;
                 setupAdapter();
-            } else {
             }
         }
     }
@@ -164,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Network networkUtils = new Network();
                 topRated = networkUtils.getTopMovies();
-
                 return topRated;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -214,21 +207,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getMoviesModel() {
-        Log.v("benjamin1984", "pinkfloydRules");
         final MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         LiveData<List<Movie>> favorites = viewModel.getTasks();
 
         if (favorites.getValue().size() == 0) {
-            Log.v("benjamin1985", "pinkfloydRules");
             Toast.makeText(MainActivity.this, "Favorites option doesn't have any movie", Toast.LENGTH_SHORT).show();
         } else {
-            Log.v("benjamin1986", "pinkfloydRules");
             setupViewModel();
         }
     }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)  {
@@ -238,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
                 showPopularModel = true;
                 showTopModel = false;
                 getPopularMovies();
-
                 return true;
             case R.id.action_rated:
                 showFavModel = false;
