@@ -45,7 +45,7 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.media_delegate);
+        setContentView(com.example.benja.moviesdatabase.R.layout.media_delegate);
         final Movie mMovie;
         mDb = AppDatabase.getsInstance(getApplicationContext());
 
@@ -57,13 +57,13 @@ public class DetailsActivity extends AppCompatActivity {
 
         final String poster2 = mMovie.getPoster2();
         final String averageOriginal = mMovie.getAverage();
-        poster = findViewById(R.id.imageView);
-        starImage = findViewById(R.id.star_icon);
-        review = findViewById(R.id.reviewButton);
-        title = findViewById(R.id.movieTittle);
-        description = findViewById(R.id.textSummary);
-        year = findViewById(R.id.textYear);
-        average = findViewById(R.id.textView2);
+        poster = findViewById(com.example.benja.moviesdatabase.R.id.imageView);
+        starImage = findViewById(com.example.benja.moviesdatabase.R.id.star_icon);
+        review = findViewById(com.example.benja.moviesdatabase.R.id.reviewButton);
+        title = findViewById(com.example.benja.moviesdatabase.R.id.movieTittle);
+        description = findViewById(com.example.benja.moviesdatabase.R.id.textSummary);
+        year = findViewById(com.example.benja.moviesdatabase.R.id.textYear);
+        average = findViewById(com.example.benja.moviesdatabase.R.id.textView2);
         title.setText(mMovie.getTitle());
         description.setText(mMovie.getDescription());
         year2 = mMovie.getYear();
@@ -72,7 +72,7 @@ public class DetailsActivity extends AppCompatActivity {
         average.setText(mMovie.getAverage() + "/10");
         movieid = mMovie.getMid();
         getVideos(movieid);
-        mRecyclerView = findViewById(R.id.videoRecycler);
+        mRecyclerView = findViewById(com.example.benja.moviesdatabase.R.id.videoRecycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         movieVideoAdapter = new MovieVideoAdapter(mMovieVideos);
         mRecyclerView.setAdapter(movieVideoAdapter);
@@ -107,9 +107,9 @@ public class DetailsActivity extends AppCompatActivity {
         boolean isFavorite = mDb.taskDao().loadTaskById(mid) != null;
 
         if (isFavorite) {
-            starImage.setImageResource(R.drawable.filledstar);
+            starImage.setImageResource(com.example.benja.moviesdatabase.R.drawable.filledstar);
         } else {
-            starImage.setImageResource(R.drawable.star);
+            starImage.setImageResource(com.example.benja.moviesdatabase.R.drawable.star);
         }
 
     }
@@ -135,7 +135,7 @@ public class DetailsActivity extends AppCompatActivity {
                     showPopUp();
                     updateReview(mReview);
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.review), Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(com.example.benja.moviesdatabase.R.string.review), Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
@@ -157,15 +157,15 @@ public class DetailsActivity extends AppCompatActivity {
         // Build an AlertDialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(DetailsActivity.this);
         LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dialog,null);
+        final View dialogView = inflater.inflate(com.example.benja.moviesdatabase.R.layout.dialog,null);
 
         // Specify alert dialog is not cancelable/not ignorable
         builder.setCancelable(false);
-        mMovieReviewDesc = dialogView.findViewById(R.id.author);
+        mMovieReviewDesc = dialogView.findViewById(com.example.benja.moviesdatabase.R.id.author);
         // Set the custom layout as alert dialog view
         builder.setView(dialogView);
 
-        Button closeButton = dialogView.findViewById(R.id.closeButton);
+        Button closeButton = dialogView.findViewById(com.example.benja.moviesdatabase.R.id.closeButton);
         final AlertDialog dialog = builder.create();
         closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override

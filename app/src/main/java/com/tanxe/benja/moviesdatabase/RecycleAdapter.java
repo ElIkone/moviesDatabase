@@ -24,7 +24,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_movie, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(com.example.benja.moviesdatabase.R.layout.row_movie, parent, false);
         return new ViewHolder(view);
     }
 
@@ -33,7 +33,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         Movie movie = mMovieList.get(position);
         Picasso.with(mContext)
                 .load(movie.getPoster())
-                .placeholder(R.color.colorAccent)
+                .placeholder(com.example.benja.moviesdatabase.R.color.colorAccent)
                 .into(holder.imageView);
     }
 
@@ -54,7 +54,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
         public ImageView imageView;
         public ViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageView);
+            imageView = itemView.findViewById(com.example.benja.moviesdatabase.R.id.imageView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

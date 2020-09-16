@@ -5,6 +5,7 @@ import com.tanxe.benja.moviesdatabase.database.AppDatabase;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,6 +21,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +36,16 @@ public class MainActivity extends AppCompatActivity {
     boolean showPopularModel = true;
     boolean showTopModel = false;
     GridLayoutManager mLayoutManager;
+    private DayOfWeek ViewModelProvider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.benja.moviesdatabase.R.layout.activity_main);
         List<Movie> movies = new ArrayList<>();
         mLayoutManager = new GridLayoutManager(this, 2);
 
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(com.example.benja.moviesdatabase.R.id.recyclerView);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecycleAdapter = new RecycleAdapter(MainActivity.this);
         mRecyclerView.setAdapter(mRecycleAdapter);
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.settings, menu);
+        inflater.inflate(com.example.benja.moviesdatabase.R.menu.settings, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -192,7 +196,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setupViewModel() {
+//        viewModel = ViewModelProvider(this).get(BaseViewModel.class);
         MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+
         viewModel.getTasks().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> moviesFavorites) {
@@ -205,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void getMoviesModel() {
         final MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
@@ -220,19 +228,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item)  {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case com.example.benja.moviesdatabase.R.id.action_settings:
                 showFavModel = false;
                 showPopularModel = true;
                 showTopModel = false;
                 getPopularMovies();
                 return true;
-            case R.id.action_rated:
+            case com.example.benja.moviesdatabase.R.id.action_rated:
                 showFavModel = false;
                 showPopularModel = false;
                 showTopModel = true;
                 getTopMovies();
                 return true;
-            case R.id.favorites:
+            case com.example.benja.moviesdatabase.R.id.favorites:
                 showFavModel = true;
                 showTopModel = false;
                 showPopularModel = false;

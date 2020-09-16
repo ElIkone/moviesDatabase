@@ -27,7 +27,7 @@ public class MovieVideoAdapter extends  RecyclerView.Adapter<MovieVideoAdapter.V
     @Override
     public MovieVideoAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_video, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(com.example.benja.moviesdatabase.R.layout.movie_video, parent, false);
         return new MovieVideoAdapter.ViewHolder(view);
     }
 
@@ -42,7 +42,7 @@ public class MovieVideoAdapter extends  RecyclerView.Adapter<MovieVideoAdapter.V
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            imageView = itemView.findViewById(R.id.movieItem);
+            imageView = itemView.findViewById(com.example.benja.moviesdatabase.R.id.movieItem);
         }
 
         void bind(int listIndex) {
